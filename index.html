@@ -1,0 +1,39 @@
+---
+layout: default
+title: "JOI 印象に残っている問題 投票結果"
+---
+
+<h1>{{ page.title | escape }}</h1>
+<p class="subtitle">過去の「日本情報オリンピックで印象に残っている問題」の投票結果の一覧です。</p>
+
+<ul class="vote-list">
+  <li><a href="{{ '/pages/2026-04.html' | relative_url }}">2026年4月 投票結果</a></li>
+</ul>
+
+<style>
+  .vote-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  .vote-list li {
+    margin-bottom: 1rem;
+  }
+  .vote-list a {
+    display: block;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-radius: 6px;
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .vote-list a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    text-decoration: none;
+  }
+</style>

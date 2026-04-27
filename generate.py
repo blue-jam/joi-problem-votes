@@ -2,6 +2,7 @@
 """Generate Jekyll data files from votes.csv for JOI problem voting results."""
 
 import csv
+import glob
 import json
 import os
 import re
@@ -153,23 +154,36 @@ def aggregate_votes(votes: list, task_lookup: dict) -> list:
 
 
 def main() -> None:
-    if not os.path.exists(VOTES_FILE):
-        print(f"Error: {VOTES_FILE} not found.", file=sys.stderr)
-        sys.exit(1)
+    csv_files = glob.glob("votes_*.csv")
+    if not csv_files:
+        # Fallback for old filename if it exists
+        if os.path.exists("votes.csv"):
+            csv_files = ["votes.csv"]
+        else:
+            print("Warning: No votes_*.csv files found.", file=sys.stderr)
+            return
 
     tasks = fetch_tasks()
     task_lookup = build_task_lookup(tasks)
 
-    votes = read_votes(VOTES_FILE)
-    results = aggregate_votes(votes, task_lookup)
+    os.makedirs(os.path.join("_data", "votes"), exist_ok=True)
 
-    os.makedirs("_data", exist_ok=True)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
-
-    print(
-        f"Generated {OUTPUT_FILE} with {len(results)} problems from {len(votes)} votes."
-    )
+    for csv_file in csv_files:
+        basename = os.path.basename(csv_file)
+        if basename.startswith("votes_") and basename.endswith(".csv"):
+            vote_id = basename[len("votes_"):-4]
+        else:
+            vote_id = "results"
+            
+        output_file = os.path.join("_data", "votes", f"{vote_id}.json")
+        
+        votes = read_votes(csv_file)
+        results = aggregate_votes(votes, task_lookup)
+        
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(results, f, ensure_ascii=False, indent=2)
+            
+        print(f"Generated {output_file} with {len(results)} problems from {len(votes)} votes.")
 
 
 if __name__ == "__main__":

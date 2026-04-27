@@ -4,68 +4,36 @@ title: "JOI 印象に残っている問題 投票結果"
 ---
 
 <h1>{{ page.title | escape }}</h1>
-<p class="subtitle">日本情報オリンピックで印象に残っている問題の投票結果です。</p>
+<p class="subtitle">過去の「日本情報オリンピックで印象に残っている問題」の投票結果の一覧です。</p>
 
-<h2>ランキング</h2>
+<ul class="vote-list">
+  <li><a href="{{ '/2026-04.html' | relative_url }}">2026年4月 投票結果</a></li>
+</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th class="rank">順位</th>
-      <th>問題名</th>
-      <th>出典</th>
-      <th class="votes">票数</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for problem in site.data.results %}
-    <tr>
-      <td class="rank">{{ problem.rank }}</td>
-      <td>
-        {% if problem.source_url != "" %}
-          <a class="problem-link"
-             href="{{ problem.source_url | escape }}"
-             rel="noopener noreferrer"
-             target="_blank">{{ problem.name | escape }}</a>
-        {% else %}
-          {{ problem.name | escape }}
-        {% endif %}
-      </td>
-      <td class="source">{{ problem.source | escape }}</td>
-      <td class="votes">{{ problem.votes }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<div class="comments-section">
-  <h2>コメント</h2>
-
-  {% for problem in site.data.results %}
-    {% if problem.comments.size > 0 %}
-    <div class="problem-comments">
-      <h3>
-        {% if problem.source_url != "" %}
-          <a class="problem-link"
-             href="{{ problem.source_url | escape }}"
-             rel="noopener noreferrer"
-             target="_blank">{{ problem.name | escape }}</a>
-        {% else %}
-          {{ problem.name | escape }}
-        {% endif %}
-        {% if problem.source != "" %}
-          <span class="source">（{{ problem.source | escape }}）</span>
-        {% endif %}
-      </h3>
-      <ul class="comment-list">
-        {% for comment in problem.comments %}
-        <li class="comment-item">
-          <div class="comment-author">{{ comment.nickname | escape }}</div>
-          <div class="comment-text">{{ comment.reason | escape }}</div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-  {% endfor %}
-</div>
+<style>
+  .vote-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  .vote-list li {
+    margin-bottom: 1rem;
+  }
+  .vote-list a {
+    display: block;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-radius: 6px;
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .vote-list a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    text-decoration: none;
+  }
+</style>

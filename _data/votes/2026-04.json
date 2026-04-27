@@ -1,0 +1,452 @@
+[
+  {
+    "rank": 1,
+    "name": "ミ・テレフェリコ",
+    "source": "25本選3",
+    "source_url": "",
+    "votes": 2,
+    "comments": [
+      {
+        "nickname": "Yoyoyo8128",
+        "reason": "圧倒的トラウマ"
+      },
+      {
+        "nickname": "Tyson8331",
+        "reason": "この問題に時間をかけて本戦に落ちたから"
+      }
+    ]
+  },
+  {
+    "rank": 1,
+    "name": "川下り",
+    "source": "26本選4",
+    "source_url": "",
+    "votes": 2,
+    "comments": [
+      {
+        "nickname": "Yoyoyo8128",
+        "reason": "本番死ぬほど焦ったから"
+      },
+      {
+        "nickname": "匿名",
+        "reason": "史上初のセミファイナル、D 問題には旧本選 C 問題と同じくらいの難易度の問題がでて解けないとファイナル進出が厳しくなる、と多くの人が思っていたところで実装をバグらせやすいこの問題が来て、競技中のダメージが大きかった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Ambulance",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_d",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "hirayuu_At",
+        "reason": "解けたし他の人が解けていなかったから"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Candies",
+    "source": "18春合宿4-1",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "manybear",
+        "reason": "とある競技プログラミング系サーバーで、競プロ問題アキネーターをしていて、僕が問題を当てる側の人のうちの一人としてプレイしていました。その時に、僕がもう少しで問題が確定しそうところまで絞ったところを、ある他の解答者にかっさらわれたときの問題がこれでした。いつか耳に飴をつめこんであげます。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Collecting Stamps 4",
+    "source": "25春トレ2-2",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "匿名",
+        "reason": "全員 100 点を取っていたのに自分だけ 0 点を取ってしまった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Conference",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_h",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "匿名",
+        "reason": "考察をすると見えてくるが、まず場合分けがとてつもなく多く、証明のステップ数も多い。さらに、場合分けをした後に出てくる部分問題もかなり難しく、もちろん実装も重い。スライドもありえない枚数と密度でびっくりしてしまった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Mountain Rescue Team",
+    "source": "13春合宿3-3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "rh",
+        "reason": "単調性を使ってジグザグ動くのが面白い"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Naan",
+    "source": "19春合宿1-3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "yuma220284",
+        "reason": "ギャグ"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Navigation",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_j",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "hirayuu_At",
+        "reason": "初めて知ったときの衝撃"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Origami",
+    "source": "08春合宿3-1",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "river0525",
+        "reason": "典型のアルゴリズムが嘘解法となっており、問題の性質に注目することが大切という競プロの本質をとらえたような問題構造だと思ったから。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Ramen",
+    "source": "14春合宿1-4",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "匿名",
+        "reason": "初めて解いた Communication Task"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Sengoku",
+    "source": "10春合宿1-2",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "rh",
+        "reason": "グリッドの性質を抑えていますか？という問題で、聞いていることは以外にもかんたん"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Uiro",
+    "source": "25春トレ4-3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "匿名",
+        "reason": "これで100点を取って代表になった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "おせんべい",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_e",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "Lqd0f",
+        "reason": "応用的なbit全探索を自力実装できて嬉しかったから"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "じゃんけん式",
+    "source": "20二次予選5",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "river0525",
+        "reason": "再帰下降法を用いた構文解析を初めて使った問題で、競プロのみならず電卓の実装などにも使えそうだと思ったから。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "インターカステラー",
+    "source": "22本選1",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "tatyam",
+        "reason": "問題文のセンスが天才的"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "サッカー",
+    "source": "17本選4",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "yuma220284",
+        "reason": "問題設定も解法も面白い"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "スタンプラリー 3",
+    "source": "20本選3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "Rho17",
+        "reason": "解法まで分かっていたのにDPの遷移が一生合わず。これを通せていたら春進出だったことがずっと頭から離れない。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "タイル",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joi2011yo/tasks/joi2011yo_c",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "かなた",
+        "reason": "難易度4の中では珍しい全探索方針が通らないから　実際にタイルを作ろうとすると配列のサイズが大きすぎてREになる"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "パーティ",
+    "source": "10予選3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "blue_jam",
+        "reason": "この問題だけ間違えて、予選満点を逃した。問題文中の「入力例 2 において，あなたには友達はいない．」がシュールで面白い。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "ビンゴ",
+    "source": "09予選6",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "blue_jam",
+        "reason": "解説を読んでも全然わからなかったので、高専の先生に相談した。しかし、先生は1時間悩んだ結果匙を投げた。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "ビ太郎の旅 3",
+    "source": "26二次予選5",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "manybear",
+        "reason": "コンテスト終了間際に滑り込みで正解できたことがとても印象に残っています。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "マスキングテープ",
+    "source": "25二次予選1",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "匿名",
+        "reason": "初参加の二次予選で唯一解けた問題だったから。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "交易計画",
+    "source": "22二次予選5",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "river0525",
+        "reason": "UnionFIndにundo機能を実装するという発想が新鮮だったから。今までACLに頼りっぱなしだったUnionFindを自力実装する必要が生じ、難易度9のレベルを感じる問題だった。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "奇妙な機械",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joi2026sf/tasks/joi2026_semifinal_f",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "hirayuu_At",
+        "reason": "解けたし他の人が解けていなかったから"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "宣伝 2",
+    "source": "23本選2",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "Yoyoyo8128",
+        "reason": "中1で通せて嬉しかった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "往復すごろく",
+    "source": "",
+    "source_url": "https://atcoder.jp/contests/joi2021yo2/tasks/joi2021_yo2_a",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "かなた",
+        "reason": "ピ太郎のいる位置より前の#はstack 後ろの#はqueueに突っ込むと次行く場所を表せられる　データ構造を駆使してる感が気持ち良い"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "方向音痴のトナカイ",
+    "source": "10予選6",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "blue_jam",
+        "reason": "頑張って枝刈りをして、ローカルで長時間動かしたら10分ぐらいで答えが出た。残ったコンテスト時間を全部使って、全ケース正解を出すことができた。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "毒蛇の脱走",
+    "source": "18本選5",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "Rho17",
+        "reason": "初の本選の最終問題。解説のDEGwerさんが面白かった"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "火事",
+    "source": "20本選5",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "yuma220284",
+        "reason": "解法がカッコいい"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "葵とIOI",
+    "source": "26一次予選2-3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "究",
+        "reason": "距離(26一次予選2-4)と合わせて「稚拙なコードでも結果が同じなら正解」という競プロの明快さで競プロにハマるきっかけになったから"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "衣服",
+    "source": "26本選3",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "manybear",
+        "reason": "最後の小課題だけ通せず満点を逃したのがとても悔しくて、印象に残っています。"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "財宝",
+    "source": "15予選6",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "rh",
+        "reason": "単純な全探索が想定解法でびっくり"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "距離",
+    "source": "26一次予選2-4",
+    "source_url": "",
+    "votes": 1,
+    "comments": [
+      {
+        "nickname": "究",
+        "reason": "検索でabs関数を知りギリギリで4完取れた達成感で競プロを始めるきっかけになったから"
+      }
+    ]
+  }
+]

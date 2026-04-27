@@ -10,6 +10,7 @@ import sys
 from collections import defaultdict
 from urllib.error import URLError
 from urllib.request import urlopen
+import ssl
 
 VOTES_FILE = "votes.csv"
 OUTPUT_FILE = os.path.join("_data", "results.json")
@@ -29,7 +30,10 @@ def is_safe_url(value: str) -> bool:
 def fetch_tasks() -> list:
     """Fetch task metadata from the JOI API."""
     try:
-        with urlopen(TASKS_URL, timeout=10) as resp:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        with urlopen(TASKS_URL, timeout=10, context=ctx) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except (URLError, Exception) as exc:
         print(f"Warning: Could not fetch tasks.json: {exc}", file=sys.stderr)
@@ -123,21 +127,31 @@ def aggregate_votes(votes: list, task_lookup: dict) -> list:
             prev_count = count
 
         source = first_source.get(name, "")
-
-        # Try to enrich source URL from tasks.json if we only have a short code
-        task_info = task_lookup.get(name)
         source_url = ""
-        if task_info:
-            for url_key in ("url", "link", "atcoder_url", "aoj_url"):
-                url_val = task_info.get(url_key, "")
-                if url_val and is_safe_url(url_val):
-                    source_url = url_val
-                    break
 
         # If the source field itself is already a URL, use it directly
         if is_safe_url(source):
             source_url = source
             source = ""
+
+        # Try to enrich source and source URL from tasks.json if they are missing
+        task_info = task_lookup.get(name)
+        if task_info:
+            if not source:
+                source = task_info.get("source", "")
+                
+            if not source_url:
+                for url_key in ("url", "link", "atcoder_url", "aoj_url"):
+                    url_val = task_info.get(url_key, "")
+                    if url_val and is_safe_url(url_val):
+                        source_url = url_val
+                        break
+            
+            if not source_url:
+                atcoder_contest = task_info.get("atcoder_contest")
+                atcoder_id = task_info.get("atcoder_id")
+                if atcoder_contest and atcoder_id:
+                    source_url = f"https://atcoder.jp/contests/{atcoder_contest}/tasks/{atcoder_id}"
 
         results.append(
             {

@@ -11,8 +11,7 @@ kramdown:
 
 # Exclude from processing
 exclude:
-  - generate.py
-  - votes.csv
+  - "*.py"
   - Gemfile
   - Gemfile.lock
   - README.md

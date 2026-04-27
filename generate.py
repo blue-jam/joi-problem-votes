@@ -154,13 +154,15 @@ def aggregate_votes(votes: list, task_lookup: dict) -> list:
 
 
 def main() -> None:
-    csv_files = glob.glob("votes_*.csv")
+    csv_files = glob.glob("votes/*.csv")
     if not csv_files:
-        # Fallback for old filename if it exists
-        if os.path.exists("votes.csv"):
+        # Fallback for old filenames if they exist in the root
+        csv_files = glob.glob("votes_*.csv")
+        if not csv_files and os.path.exists("votes.csv"):
             csv_files = ["votes.csv"]
-        else:
-            print("Warning: No votes_*.csv files found.", file=sys.stderr)
+            
+        if not csv_files:
+            print("Warning: No .csv files found in votes/ directory.", file=sys.stderr)
             return
 
     tasks = fetch_tasks()
@@ -170,8 +172,10 @@ def main() -> None:
 
     for csv_file in csv_files:
         basename = os.path.basename(csv_file)
-        if basename.startswith("votes_") and basename.endswith(".csv"):
-            vote_id = basename[len("votes_"):-4]
+        if basename.endswith(".csv"):
+            vote_id = basename[:-4]
+            if vote_id.startswith("votes_"):
+                vote_id = vote_id[len("votes_"):]
         else:
             vote_id = "results"
             

@@ -3,6 +3,7 @@ description: "日本情報オリンピックの印象に残っている問題の
 baseurl: "/joi-problem-votes"
 url: "https://blue-jam.github.io"
 lang: ja
+theme: minima
 
 # Build settings
 markdown: kramdown

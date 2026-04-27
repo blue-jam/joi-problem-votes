@@ -2,5 +2,5 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-_data/results.json
+_data/votes/
 __pycache__/

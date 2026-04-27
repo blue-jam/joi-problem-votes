@@ -2,6 +2,7 @@ title: "JOI 印象に残っている問題 投票結果"
 description: "日本情報オリンピックの印象に残っている問題の投票結果"
 baseurl: "/joi-problem-votes"
 url: "https://blue-jam.github.io"
+author: "ぶるけんプログラミング道場"
 lang: ja
 theme: minima
 

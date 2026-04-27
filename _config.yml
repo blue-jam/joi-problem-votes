@@ -1,0 +1,19 @@
+title: "JOI 印象に残っている問題 投票結果"
+description: "日本情報オリンピックの印象に残っている問題の投票結果"
+baseurl: ""
+url: ""
+lang: ja
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Exclude from processing
+exclude:
+  - generate.py
+  - votes.csv
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .github

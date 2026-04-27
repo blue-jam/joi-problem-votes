@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""Generate Jekyll data files from votes.csv for JOI problem voting results."""
+
+import csv
+import json
+import os
+import re
+import sys
+from collections import defaultdict
+from urllib.error import URLError
+from urllib.request import urlopen
+
+VOTES_FILE = "votes.csv"
+OUTPUT_FILE = os.path.join("_data", "results.json")
+TASKS_URL = "https://joi.goodbaton.com/data/tasks.json"
+
+# Matches any URI scheme (e.g. http:, https:, javascript:, data:, …)
+_ANY_SCHEME_RE = re.compile(r"^\w[\w+\-.]*:", re.IGNORECASE)
+# Only http / https are considered safe for hrefs
+_SAFE_URL_RE = re.compile(r"^https?://", re.IGNORECASE)
+
+
+def is_safe_url(value: str) -> bool:
+    """Return True only for http/https URLs (prevents javascript: etc.)."""
+    return bool(_SAFE_URL_RE.match(value))
+
+
+def fetch_tasks() -> list:
+    """Fetch task metadata from the JOI API."""
+    try:
+        with urlopen(TASKS_URL, timeout=10) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except (URLError, Exception) as exc:
+        print(f"Warning: Could not fetch tasks.json: {exc}", file=sys.stderr)
+        return []
+
+
+def build_task_lookup(tasks: list) -> dict:
+    """Build a dict mapping task name/title → task info."""
+    lookup: dict = {}
+    for task in tasks:
+        for key in ("name", "title", "id"):
+            value = task.get(key)
+            if value and isinstance(value, str):
+                lookup.setdefault(value, task)
+    return lookup
+
+
+def read_votes(filename: str) -> list:
+    """Read voting rows from the CSV file."""
+    votes = []
+    with open(filename, encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header row
+        for row in reader:
+            if len(row) < 4:
+                continue
+            timestamp = row[0].strip()
+            nickname = row[1].strip()
+            problems = []
+            for i in range(3):
+                base = 3 + i * 3
+                # Need at least the problem name column
+                if base >= len(row):
+                    break
+                name = row[base].strip() if base < len(row) else ""
+                source = row[base + 1].strip() if base + 1 < len(row) else ""
+                reason = row[base + 2].strip() if base + 2 < len(row) else ""
+                if name:
+                    # If source looks like any URI scheme but is not http/https, blank it
+                    if source and _ANY_SCHEME_RE.match(source) and not is_safe_url(source):
+                        source = ""
+                    problems.append(
+                        {
+                            "name": name,
+                            "source": source,
+                            "reason": reason,
+                        }
+                    )
+            if problems:
+                votes.append(
+                    {
+                        "timestamp": timestamp,
+                        "nickname": nickname,
+                        "problems": problems,
+                    }
+                )
+    return votes
+
+
+def aggregate_votes(votes: list, task_lookup: dict) -> list:
+    """Count votes per problem, rank them, and attach comments."""
+    vote_counts: dict = defaultdict(int)
+    # Use the first seen source for each problem key
+    first_source: dict = {}
+    comments: dict = defaultdict(list)
+
+    for vote in votes:
+        display_name = vote["nickname"] if vote["nickname"] else "匿名"
+        for problem in vote["problems"]:
+            name = problem["name"]
+            vote_counts[name] += 1
+            if name not in first_source and problem["source"]:
+                first_source[name] = problem["source"]
+            if problem["reason"]:
+                comments[name].append(
+                    {
+                        "nickname": display_name,
+                        "reason": problem["reason"],
+                    }
+                )
+
+    # Sort: descending vote count, then ascending problem name for deterministic order
+    sorted_problems = sorted(vote_counts.items(), key=lambda x: (-x[1], x[0]))
+
+    results = []
+    current_rank = 0
+    prev_count = None
+    for position, (name, count) in enumerate(sorted_problems, start=1):
+        if count != prev_count:
+            current_rank = position
+            prev_count = count
+
+        source = first_source.get(name, "")
+
+        # Try to enrich source URL from tasks.json if we only have a short code
+        task_info = task_lookup.get(name)
+        source_url = ""
+        if task_info:
+            for url_key in ("url", "link", "atcoder_url", "aoj_url"):
+                url_val = task_info.get(url_key, "")
+                if url_val and is_safe_url(url_val):
+                    source_url = url_val
+                    break
+
+        # If the source field itself is already a URL, use it directly
+        if is_safe_url(source):
+            source_url = source
+            source = ""
+
+        results.append(
+            {
+                "rank": current_rank,
+                "name": name,
+                "source": source,
+                "source_url": source_url,
+                "votes": count,
+                "comments": comments[name],
+            }
+        )
+
+    return results
+
+
+def main() -> None:
+    if not os.path.exists(VOTES_FILE):
+        print(f"Error: {VOTES_FILE} not found.", file=sys.stderr)
+        sys.exit(1)
+
+    tasks = fetch_tasks()
+    task_lookup = build_task_lookup(tasks)
+
+    votes = read_votes(VOTES_FILE)
+    results = aggregate_votes(votes, task_lookup)
+
+    os.makedirs("_data", exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
+
+    print(
+        f"Generated {OUTPUT_FILE} with {len(results)} problems from {len(votes)} votes."
+    )
+
+
+if __name__ == "__main__":
+    main()
